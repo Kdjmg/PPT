@@ -9,7 +9,7 @@ function App() {
 
 
   return <>
-  <img className=" absolute max-w-[6.6%] mx-2" src="/public/ppt.png" alt="" />
+  <img className=" absolute max-w-[10%] mx-2" src="/public/ppt.png" alt="" />
       <nav className="flex justify-center items-center bg-gray-800 text-white py-8">
       <ul className="flex space-x-4">
         <li>
