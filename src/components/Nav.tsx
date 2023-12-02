@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { IonIcon } from '@ionic/react';
-import { close, menu } from 'ionicons/icons'; // Importez les icônes nécessaires depuis ionicons/icons
+import { close, menu } from 'ionicons/icons'; 
 
 import { NavLink } from 'react-router-dom';
 const Nav = () => {
