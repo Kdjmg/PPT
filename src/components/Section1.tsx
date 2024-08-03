@@ -8,7 +8,7 @@ export const Section1: React.FC = () => {
 
       <div className="flex justify-center items-center mt-6">
         <div className="h-px w-52 bg-blue-500 mr-2"></div>
-        <img src=" public/ppt.png" className="h-full w-[42px]" alt="Logo PPT" />
+        <img src="/ppt.png" className="h-full w-[42px]" alt="Logo PPT" />
         <div className="h-px w-52 bg-blue-500 ml-2"></div>
       </div>
 
