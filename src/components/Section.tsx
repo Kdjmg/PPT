@@ -16,11 +16,6 @@ export const Section: React.FC<ParamsProps> = ({ title, descript,  }) => {
             <p className="text-xl  overflow-auto">{descript}</p>
 
         </div>
-
-        {/* <div className="w-[100%] m-2 md:flex ">
-        <img className=" ml-14 object-contain w-[50%]" src={img} alt="" />
-
-        </div> */}
     </section> }
     </>
     )
