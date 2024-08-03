@@ -10,7 +10,7 @@ export function Home() {
     <>
       <Section1 />
       <div className="w-full mb-4 mt-4 ">
-      <img src="public/ppt2.jpeg" alt="" className=" w-full h-96 object-cover rounded-lg" />
+      <img src="../public/ppt2.jpeg" alt="" className=" w-full h-96 object-cover rounded-lg" />
 
       </div>
       <Section2 />

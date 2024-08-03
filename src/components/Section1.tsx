@@ -8,7 +8,7 @@ export const Section1: React.FC = () => {
 
       <div className="flex justify-center items-center mt-6">
         <div className="h-px w-52 bg-blue-500 mr-2"></div>
-        <img src="public/ppt.png" className="h-full w-[42px]" alt="Logo PPT" />
+        <img src="../public/ppt.png" className="h-full w-[42px]" alt="Logo PPT" />
         <div className="h-px w-52 bg-blue-500 ml-2"></div>
       </div>
 
@@ -27,13 +27,13 @@ export const Section1: React.FC = () => {
 
       <div className="flex justify-center mt-8 space-x-4">
         <div className="w-1/3">
-          <img src="public/pates.jpg" alt="Pâtes" className="rounded-lg shadow-lg" />
+          <img src="../public/pates.jpg" alt="Pâtes" className="rounded-lg shadow-lg" />
         </div>
         <div className="w-1/3">
-          <img src="public/panini.jpg" alt="Panini" className="rounded-lg shadow-lg" />
+          <img src="../public/panini.jpg" alt="Panini" className="rounded-lg shadow-lg" />
         </div>
         <div className="w-1/3">
-          <img src="public/tenders.jpg" alt="Poulet" className="rounded-lg shadow-lg" />
+          <img src="../public/tenders.jpg" alt="Poulet" className="rounded-lg shadow-lg" />
         </div>
       </div>
     </>
