@@ -8,12 +8,12 @@ export const Section1: React.FC = () => {
 
       <div className="flex justify-center items-center mt-6">
         <div className="h-px w-52 bg-blue-500 mr-2"></div>
-        <img src="../public/ppt.png" className="h-full w-[42px]" alt="Logo PPT" />
+        <img src=" public/ppt.png" className="h-full w-[42px]" alt="Logo PPT" />
         <div className="h-px w-52 bg-blue-500 ml-2"></div>
       </div>
 
       <div className="flex justify-around flex-wrap flex-col md:flex-row items-center mt-8">
-        <img src="public/tacosfritecoca.png" alt="" className=' w-2/4 md:w-2/6' />
+        <img src="/tacosfritecoca.png" alt="" className=' w-2/4 md:w-2/6' />
         <div className="border rounded-lg p-6 bg-white shadow-lg w-3/4 md:w-1/2 mr-4">
           <h3 className="text-2xl font-bold text-center text-blue-900 mb-4">Ouvert du Lundi à Jeudi de 11h30 à 14h30 18h30 23h30 et Vendredi à Dimanche de 18h30 à 23h30 </h3>
           <p className="flex justify-center text-center text-lg m-4">Vous avez une petite faim ou un appétit dévorant ?</p>
@@ -27,13 +27,13 @@ export const Section1: React.FC = () => {
 
       <div className="flex justify-center mt-8 space-x-4">
         <div className="w-1/3">
-          <img src="../public/pates.jpg" alt="Pâtes" className="rounded-lg shadow-lg" />
+          <img src="pates.jpg" alt="Pâtes" className="rounded-lg shadow-lg" />
         </div>
         <div className="w-1/3">
-          <img src="../public/panini.jpg" alt="Panini" className="rounded-lg shadow-lg" />
+          <img src="/panini.jpg" alt="Panini" className="rounded-lg shadow-lg" />
         </div>
         <div className="w-1/3">
-          <img src="../public/tenders.jpg" alt="Poulet" className="rounded-lg shadow-lg" />
+          <img src="/tenders.jpg" alt="Poulet" className="rounded-lg shadow-lg" />
         </div>
       </div>
     </>
