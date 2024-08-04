@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React from 'react';
 import { IonIcon } from '@ionic/react';
-import { basket, close } from 'ionicons/icons';
+import { basket, close, trash} from 'ionicons/icons';
 
 type listmenu = {
   title: string;
@@ -13,16 +13,12 @@ type listmenu = {
 type BasketProps = {
   isBasketOpen: boolean;
   toggleBasket: () => void;
-  cartItems: {title: string; price: number}[];
+  cartItems: listmenu[];
+  removeFromCart: (index: number) => void;
 };
-const Basket: React.FC<BasketProps> = () => {
-  const [cartItems, ] = useState<listmenu[]>([]);
-  const [isBasketOpen, setIsBasketOpen] = useState(false);
-  const totalPrice = cartItems.reduce((total: number, item: { price: string; }) => total + parseFloat(item.price.toString().replace("€", "")), 0);
-  const toggleBasket = () => {
-    setIsBasketOpen(!isBasketOpen);
-  };
 
+const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart }) => {
+  const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price.toString().replace("€", "")), 0);
 
   return (
     <>
@@ -31,13 +27,19 @@ const Basket: React.FC<BasketProps> = () => {
           <IonIcon icon={isBasketOpen ? close : basket} size="large"></IonIcon>
         </button>
         {isBasketOpen && (
-          <div className="text-white ml-4">
+          <div className="text-white ml-4 ">
             <h2 className="text-xl font-bold mb-4">Votre Panier</h2>
             {cartItems.map((item, index) => (
-              <div key={index}>
-              <p key={item.title}>{item.price}</p>
+              <div className="flex overflow-y-auto max-h-12 " key={index}>
+                <p className='mr-4'>{item.title}</p>
+                <p className='ml-4'>{item.price}</p>
+                <button  onClick={() => removeFromCart(index)} className="text-red-500 ml-2">
+                  <IonIcon icon={trash} size="small"></IonIcon>
+                </button>
               </div>
+              
             ))}
+            
             <p className="font-bold text-xl mt-4">Total: {totalPrice.toFixed(2)}€</p>
           </div>
         )}

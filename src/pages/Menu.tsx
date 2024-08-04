@@ -21,7 +21,14 @@ export function Menu(){
     const [filteredMenu, setFilteredMenu] = useState<listmenu[]>([]);
     const [selectedCategory, setSelectedCategory] = useState<string>('Pates');
     const [cartItems, setCartItems] = useState<listmenu[]>([]);
-    
+    const removeFromCart = (index:number) =>{
+        setCartItems(cartItems.filter((_, i) => i !== index));
+    }
+    const [isBasketOpen, setIsBasketOpen] = useState(false);
+  
+    const toggleBasket = () => {
+      setIsBasketOpen(!isBasketOpen);
+    };
 
     const filterMenuByCategory = (category?: string) => {
         if (!category || category === selectedCategory) {
@@ -268,14 +275,12 @@ export function Menu(){
       )}
 
     </div>
+    <Basket isBasketOpen={isBasketOpen} toggleBasket={toggleBasket} cartItems={cartItems} removeFromCart={removeFromCart}/>
 
-    <Basket 
-    isBasketOpen={false} 
-    toggleBasket={function (): void {} } 
-    cartItems={[]}    
-    />
+
     
     </>
 }
+
 
 
