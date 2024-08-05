@@ -27,21 +27,32 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
           <IonIcon icon={isBasketOpen ? close : basket} size="large"></IonIcon>
         </button>
         {isBasketOpen && (
-          <div className="text-white ml-4 ">
-            <h2 className="text-xl font-bold mb-4">Votre Panier</h2>
-            {cartItems.map((item, index) => (
-              <div className="flex overflow-y-auto max-h-12 " key={index}>
-                <p className='mr-4'>{item.title}</p>
-                <p className='ml-4'>{item.price}</p>
-                <button  onClick={() => removeFromCart(index)} className="text-red-500 ml-2">
-                  <IonIcon icon={trash} size="small"></IonIcon>
-                </button>
+          <div className="text-white ml-4 overflow-y-auto h-3/5">
+          <h2 className="text-xl font-bold mb-4">Votre Panier</h2>
+          {cartItems.length === 0 ? (
+            <p>Votre panier est vide.</p>
+          ) : (
+            <div className="flex flex-col space-y-2">
+              <div className="flex justify-between border-b-2 pb-2">
+                <span className="font-bold w-1/2">Article</span>
+                <span className="font-bold w-1/4 text-center">Prix</span>
+                <span className="font-bold w-1/4 text-center">Action</span>
               </div>
-              
-            ))}
-            
+              {cartItems.map((item, index) => (
+                <div className="flex justify-between items-center border-b py-2" key={index}>
+                  <span className="w-1/2">{item.title}</span>
+                  <span className="w-1/4 text-center">{item.price}</span>
+                  <button onClick={() => removeFromCart(index)} className="text-red-500 w-1/4 text-center">
+                    <IonIcon icon={trash} size="small"></IonIcon>
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+          {cartItems.length > 0 && (
             <p className="font-bold text-xl mt-4">Total: {totalPrice.toFixed(2)}€</p>
-          </div>
+          )}
+        </div>
         )}
       </div>
 

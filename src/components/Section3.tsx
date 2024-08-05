@@ -6,7 +6,7 @@ export const Section3: React.FC = () => {
         width="600"
         height="450"
         className="border-0"
-        allowFullScreen={true}
+        allowFullScreen={false}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="Google Map"

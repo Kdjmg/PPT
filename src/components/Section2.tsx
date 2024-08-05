@@ -1,6 +1,6 @@
 import React from 'react';
 import { IonIcon } from '@ionic/react';
-import { fastFoodOutline,menuOutline, homeOutline, timerOutline,} from 'ionicons/icons';
+import {homeOutline, timerOutline, globe, checkmarkCircle} from 'ionicons/icons';
 
 export const Section2: React.FC = () => {
   return (
@@ -16,25 +16,25 @@ export const Section2: React.FC = () => {
       </div>
 <div className='flex flex-col items-center align-around justify-center '></div>
       <div className="flex flex-col items-center align-around md:flex-row justify-around mt-8">
-        <div className="max-w-xs m-4 text-left flex flex-col items-center">
-          <IonIcon icon={menuOutline} className="text-blue-900 text-5xl mb-2" />
-          <h3 className="text-xl font-bold text-gray-900 uppercase">Que du choix de Qualité</h3>
+        <div className="max-w-xs m-4 text-center flex flex-col items-center">
+          <IonIcon icon={checkmarkCircle} className="text-green-500 text-5xl mb-2" />
+          <h3 className="text-xl font-bold text-gray-900 uppercase">choix de Qualité</h3>
           <p className="text-gray-700"> Tacos, Pates, Panini, où encore TexMex, il y'aura bien votre plaisir au PPT</p>
         </div>
-        <div className="max-w-xs m-4 text-left flex flex-col items-center align-around">
-          <IonIcon icon={homeOutline} className="text-blue-900 text-5xl mb-2" />
+        <div className="max-w-xs m-4 text-center flex flex-col items-center align-around">
+          <IonIcon icon={globe} className="text-blue-900 text-5xl mb-2" />
           <h3 className="text-xl font-bold text-gray-900 uppercase">Commander en ligne</h3>
           <p className="text-gray-700">Tous notre menu depuis notre site internet pour un service optimal</p>
         </div>
         </div>
         <div className="flex flex-col items-center md:flex-row justify-around mt-8">
-        <div className="max-w-xs m-4 text-left flex flex-col items-center">
+        <div className="max-w-xs m-4 text-center flex flex-col items-center">
           <IonIcon icon={timerOutline} className="text-blue-900 text-5xl mb-2" />
           <h3 className="text-xl font-bold text-gray-900 uppercase flex items-center justify-around">Livraisons rapides</h3>
-          <p className="text-gray-700 flex items-center justify-around">La proximité de nos restaurants vous permet d'être livrer en 45 minutes !</p>
+          <p className="text-gray-700 flex items-center justify-around">La proximité d'être proche du centre ville nous permet de vous livrer en moins de 45 minutes !</p>
         </div>
-        <div className="max-w-xs m-4 text-left flex flex-col items-center">
-          <IonIcon icon={fastFoodOutline} className="text-blue-900 text-5xl mb-2" />
+        <div className="max-w-xs m-4 text-center flex flex-col items-center">
+          <IonIcon icon={homeOutline} className="text-blue-900 text-5xl mb-2" />
           <h3 className="text-xl font-bold text-gray-900 flex items-center justify-around uppercase">Produits 100% MAISON</h3>
           <p className="text-gray-700 flex items-center justify-around">Nos produits frais et préparé par nos équipes chaque jour, pour vous offrir le meilleur du goût !</p>
         </div>
