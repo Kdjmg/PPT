@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { IonIcon } from '@ionic/react';
 import { basket, close, trash } from 'ionicons/icons';
 
@@ -19,10 +19,33 @@ type BasketProps = {
 
 const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart }) => {
   const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price.toString().replace("€", "")), 0);
+  const basketRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (basketRef.current && !basketRef.current.contains(event.target as Node)) {
+      toggleBasket();
+    }
+  };
+
+  useEffect(() => {
+    if (isBasketOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isBasketOpen]);
 
   return (
     <>
-      <div className={`fixed top-32 right-0 h-full bg-blue-950 transition-transform duration-500 ease-in-out ${isBasketOpen ? ' w-1/2 md:w-1/4' : 'w-0'}  overflow-hidden`}>
+      <div
+        ref={basketRef}
+        className={`fixed top-32 right-0 h-full bg-blue-950 transition-transform duration-500 ease-in-out ${
+          isBasketOpen ? ' w-1/2 md:w-1/4' : 'w-0'
+        } overflow-hidden`}
+      >
         <button onClick={toggleBasket} className="text-white mb-4">
           <IonIcon icon={isBasketOpen ? close : basket} size="large"></IonIcon>
         </button>
