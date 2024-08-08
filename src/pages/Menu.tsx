@@ -9,10 +9,15 @@ type listmenu = {
     title: string;
     descript: string;
     img: string;
-    price: string
-    tag: string
-    
-    
+    price: string;
+    requiresMeatChoice?: boolean;
+    requiredSauceChoice?: boolean;
+    meatChoiceCount?: number;
+    meatOptions?: string[];
+    sauceOptions?: string[];
+    tag: string;
+    meatSelections?: string[] ;
+    sauceSelections?: string[];
   };
 
  
@@ -40,8 +45,9 @@ export function Menu(){
         }
     };
 
-    const addToCart = (item: listmenu) => {
-        setCartItems([...cartItems, item]);
+    const addToCart = (item: listmenu, meatSelections: string[], sauceSelections: string[]) => {
+        const newItem = { ...item, meatSelections, sauceSelections };
+        setCartItems([...cartItems, newItem]);
       };
 
     const listmenu: listmenu [] = [
@@ -92,6 +98,11 @@ export function Menu(){
                 descript: "Une Viande aux choix",
                 img: "/tacos.png",
                 price: "6€",
+                requiresMeatChoice: true,
+                requiredSauceChoice: true,
+                meatChoiceCount:1,
+                meatOptions: ["Poulet", "Boeuf", "Agneau"],
+                sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
             },
             {
@@ -99,6 +110,11 @@ export function Menu(){
                 descript: "Deux viandes aux choix ",
                 img: "/tacos.png",
                 price: "7€",
+                requiresMeatChoice: true,
+                requiredSauceChoice: true,
+                meatChoiceCount:2,
+                meatOptions: ["Poulet", "Boeuf", "Agneau"],
+                sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
             },
             {
@@ -106,6 +122,11 @@ export function Menu(){
                 descript: "Trois viandes aux choix",
                 img: "/tacos.png",
                 price: "10€",
+                requiresMeatChoice: true,
+                requiredSauceChoice: true,
+                meatChoiceCount:3,
+                meatOptions: ["Poulet", "Boeuf", "Agneau"],
+                sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
             },
             {
@@ -113,6 +134,11 @@ export function Menu(){
                 descript: "quatre viandes aux choix ",
                 img: "/tacos.png",
                 price: "15€",
+                requiresMeatChoice: true,
+                requiredSauceChoice: true,
+                meatChoiceCount:4,
+                meatOptions: ["Poulet", "Boeuf", "Agneau"],
+                sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
             },
             {
@@ -267,12 +293,18 @@ export function Menu(){
 
     <div className='flex flex-wrap justify-around md:flex-row'>
         
-    {(filteredMenu.length > 0 ? filteredMenu : listmenu.filter(menu => menu.tag.toLowerCase() === selectedCategory.toLowerCase())).map((menu, index) => (
-                    <Card key={index} {...menu} addToCart={() => addToCart(menu)}/>
-                    
-   
-      )
-      )}
+    {(filteredMenu.length > 0 ? filteredMenu : listmenu.filter(menu => menu.tag.toLowerCase() === selectedCategory.toLowerCase())).map((menu, index) => {
+  const newItem = { ...menu, meatSelections: [], sauceSelections: [] }; // Create a new item with empty meatSelections and sauceSelections arrays
+  return (
+    <Card
+      key={index}
+      item={newItem}
+      addToCart={(meatSelections: string[], sauceSelections: string[]) => {
+        addToCart(newItem, meatSelections, sauceSelections);
+      }}
+    />
+  );
+})}
 
     </div>
     <Basket isBasketOpen={isBasketOpen} toggleBasket={toggleBasket} cartItems={cartItems} removeFromCart={removeFromCart}/>

@@ -8,6 +8,10 @@ type listmenu = {
   img: string;
   price: string;
   tag: string;
+  meatOptions?: string[];
+  sauceOptions?: string[];
+  meatSelections?: string[];
+  sauceSelections?: string[];
 };
 
 type BasketProps = {
@@ -20,9 +24,16 @@ type BasketProps = {
 const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart }) => {
   const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price.toString().replace("€", "")), 0);
   const basketRef = useRef<HTMLDivElement>(null);
+  const toggleButtonRef = useRef<HTMLButtonElement>(null); // Ref pour le bouton
+
 
   const handleClickOutside = (event: MouseEvent) => {
-    if (basketRef.current && !basketRef.current.contains(event.target as Node)) {
+    if (
+      basketRef.current &&
+      !basketRef.current.contains(event.target as Node) &&
+      toggleButtonRef.current &&
+      !toggleButtonRef.current.contains(event.target as Node)
+    ) {
       toggleBasket();
     }
   };
@@ -43,7 +54,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
       <div
         ref={basketRef}
         className={`fixed top-32 right-0 h-full bg-blue-950 transition-transform duration-500 ease-in-out ${
-          isBasketOpen ? ' w-1/2 md:w-1/4' : 'w-0'
+          isBasketOpen ? ' w-3/5 md:w-1/4' : 'w-0'
         } overflow-hidden`}
       >
         <button onClick={toggleBasket} className="text-white mb-4">
@@ -62,8 +73,28 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
                   <span className="font-bold w-1/4 text-center">Action</span>
                 </div>
                 {cartItems.map((item, index) => (
-                  <div className="flex justify-between items-center border-b py-2" key={index}>
+                  <div className="flex flex-col justify-between items-start border-b py-2" key={index}>
                     <span className="w-1/2">{item.title}</span>
+                    {item.meatSelections && item.meatSelections.length > 0 && (
+                      <div className="w-1/2">
+                        <span className="font-semibold">Viandes choisies:</span>
+                        <ul>
+                          {item.meatSelections.map((meat, i) => (
+                            <li key={i}>{meat}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {item.sauceSelections && item.sauceSelections.length > 0 && (
+                      <div className="w-1/2">
+                        <span className="font-semibold">Sauces choisies:</span>
+                        <ul>
+                          {item.sauceSelections.map((sauce, i) => (
+                            <li key={i}>{sauce}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                     <span className="w-1/4 text-center">{item.price}</span>
                     <button onClick={() => removeFromCart(index)} className="text-red-500 w-1/4 text-center">
                       <IonIcon icon={trash} size="small"></IonIcon>
@@ -83,7 +114,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
           </div>
         )}
       </div>
-      <button onClick={toggleBasket} className="fixed bottom-4 right-4 p-2 bg-blue-900 text-white rounded-full shadow-lg">
+      <button ref={toggleButtonRef} onClick={toggleBasket} className="fixed bottom-4 right-4 p-2 bg-blue-900 text-white rounded-full shadow-lg">
         <IonIcon icon={basket} size="large"></IonIcon>
       </button>
     </>
