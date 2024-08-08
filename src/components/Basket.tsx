@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { IonIcon } from '@ionic/react';
-import { basket, close, trash } from 'ionicons/icons';
+import { basket, trash } from 'ionicons/icons';
 
 type listmenu = {
   title: string;
@@ -24,8 +24,7 @@ type BasketProps = {
 const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart }) => {
   const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price.toString().replace("€", "")), 0);
   const basketRef = useRef<HTMLDivElement>(null);
-  const toggleButtonRef = useRef<HTMLButtonElement>(null); // Ref pour le bouton
-
+  const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -53,68 +52,67 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
     <>
       <div
         ref={basketRef}
-        className={`fixed top-32 right-0 h-full bg-blue-950 transition-transform duration-500 ease-in-out ${
-          isBasketOpen ? ' w-3/5 md:w-1/4' : 'w-0'
-        } overflow-hidden`}
+        className={`fixed top-32 right-0 h-full bg-white transition-transform duration-500 ease-in-out ${
+          isBasketOpen ? 'w-[85%] md:w-[30%]' : 'w-0'
+        } overflow-hidden shadow-lg border-l border-gray-300`}
       >
-        <button onClick={toggleBasket} className="text-white mb-4">
-          <IonIcon icon={isBasketOpen ? close : basket} size="large"></IonIcon>
-        </button>
         {isBasketOpen && (
-          <div className="text-white ml-4 overflow-y-auto h-[70%] md:h-[55%]">
+          <div className="text-gray-900 p-4 overflow-y-auto h-[78%]">
             <h2 className="text-xl font-bold mb-4">Votre Panier</h2>
             {cartItems.length === 0 ? (
-              <p>Votre panier est vide.</p>
+              <p className="text-center">Votre panier est vide.</p>
             ) : (
-              <div className="flex flex-col space-y-2">
-                <div className="flex justify-between border-b-2 pb-2">
-                  <span className="font-bold w-1/2">Article</span>
-                  <span className="font-bold w-1/4 text-center">Prix</span>
-                  <span className="font-bold w-1/4 text-center">Action</span>
-                </div>
+              <div className="flex flex-col space-y-4">
                 {cartItems.map((item, index) => (
-                  <div className="flex flex-col justify-between items-start border-b py-2" key={index}>
-                    <span className="w-1/2">{item.title}</span>
-                    {item.meatSelections && item.meatSelections.length > 0 && (
-                      <div className="w-1/2">
-                        <span className="font-semibold">Viandes choisies:</span>
-                        <ul>
-                          {item.meatSelections.map((meat, i) => (
-                            <li key={i}>{meat}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {item.sauceSelections && item.sauceSelections.length > 0 && (
-                      <div className="w-1/2">
-                        <span className="font-semibold">Sauces choisies:</span>
-                        <ul>
-                          {item.sauceSelections.map((sauce, i) => (
-                            <li key={i}>{sauce}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    <span className="w-1/4 text-center">{item.price}</span>
-                    <button onClick={() => removeFromCart(index)} className="text-red-500 w-1/4 text-center">
-                      <IonIcon icon={trash} size="small"></IonIcon>
-                    </button>
+                  <div key={index} className="flex items-start justify-between border-b pb-4">
+                    <img src={item.img} alt={item.title} className="w-20 h-20 object-cover rounded-md" />
+                    <div className="flex-1 px-4">
+                      <h3 className="text-lg font-semibold">{item.title}</h3>
+                      <p className="text-gray-600">{item.descript}</p>
+                      {item.meatSelections && item.meatSelections.length > 0 && (
+                        <div>
+                          <span className="font-semibold">Viandes choisies:</span>
+                          <span className="block text-sm text-gray-700">{item.meatSelections.join(', ')}</span>
+                        </div>
+                      )}
+                      {item.sauceSelections && item.sauceSelections.length > 0 && (
+                        <div>
+                          <span className="font-semibold">Sauces choisies:</span>
+                          <span className="block text-sm text-gray-700">{item.sauceSelections.join(', ')}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-col items-end">
+                      <span className="text-lg font-bold">{item.price}</span>
+                      <button
+                        onClick={() => removeFromCart(index)}
+                        className="text-red-500 hover:text-red-700 mt-2"
+                      >
+                        <IonIcon icon={trash} size="small"></IonIcon>
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
             )}
             {cartItems.length > 0 && (
-              <div className="flex justify-between items-center mt-4">
-                <p className="font-bold text-xl">Total: {totalPrice.toFixed(2)}€</p>
-                <button className="bg-green-500 text-white mr-4 px-4 py-2 rounded-lg ml-4">
-                  Payer
-                </button>
+              <div className="mt-6">
+                <div className="flex justify-between items-center mb-4">
+                  <p className="font-bold text-xl">Total: {totalPrice.toFixed(2)}€</p>
+                  <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
+                    Payer
+                  </button>
+                </div>
               </div>
             )}
           </div>
         )}
       </div>
-      <button ref={toggleButtonRef} onClick={toggleBasket} className="fixed bottom-4 right-4 p-2 bg-blue-900 text-white rounded-full shadow-lg">
+      <button
+        ref={toggleButtonRef}
+        onClick={toggleBasket}
+        className="fixed bottom-4 right-4 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-lg"
+      >
         <IonIcon icon={basket} size="large"></IonIcon>
       </button>
     </>
