@@ -343,7 +343,7 @@ export function Menu(){
     <div className='flex flex-wrap justify-around md:flex-row'>
         
     {(filteredMenu.length > 0 ? filteredMenu : listmenu.filter(menu => menu.tag.toLowerCase() === selectedCategory.toLowerCase())).map((menu, index) => {
-  const newItem = { ...menu, meatSelections: [], sauceSelections: [] }; // Create a new item with empty meatSelections and sauceSelections arrays
+  const newItem = { ...menu, meatSelections: [], sauceSelections: [] };
   return (
     <Card
       key={index}

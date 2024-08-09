@@ -7,7 +7,7 @@ type listmenu = {
   price: string;
   requiresMeatChoice?: boolean;
   requiredSauceChoice?: boolean;
-  meatChoiceCount?: number;
+  repeatCount?: number;
   meatOptions?: string[];
   sauceOptions?: string[];
   tag: string;
@@ -20,8 +20,8 @@ type propsCard = {
 };
 
 export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
-  const { title, descript, img, price, requiresMeatChoice, requiredSauceChoice, meatOptions, sauceOptions, meatChoiceCount } = item;
-  const [meatSelections, setMeatSelections] = useState<string[]>(meatChoiceCount ? Array(meatChoiceCount).fill('') : []);
+  const { title, descript, img, price, requiresMeatChoice, requiredSauceChoice, meatOptions, sauceOptions, repeatCount } = item;
+  const [meatSelections, setMeatSelections] = useState<string[]>(repeatCount ? Array(repeatCount).fill('') : []);
   const [sauceSelection, setSauceSelection] = useState<string[]>([]);
 
   const handleMeatSelectionChange = (index: number, meat: string) => {
@@ -51,7 +51,7 @@ export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
               {requiresMeatChoice && meatOptions && (
                 <div className="flex flex-col space-y-2">
                   <h3 className="font-semibold">Choix de la viande:</h3>
-                  {[...Array(meatChoiceCount)].map((_, index) => (
+                  {[...Array(repeatCount)].map((_, index) => (
                     <select
                       key={index}
                       value={meatSelections[index]}
