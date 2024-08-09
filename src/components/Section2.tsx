@@ -6,8 +6,9 @@ export const Section2: React.FC = () => {
   return (
     <> 
     <section className="text-center py-8 bg-white">
-      <h2 className="text-blue-900 font-bold uppercase">Une Qualité remarquable</h2>
-      <h1 className="text-3xl font-bold text-gray-900 my-4 uppercase">La qualité de PPT</h1>
+      <h1 className="text-3xl font-bold text-gray-900 my-4 uppercase">La qualité chez PPT</h1>
+      <h2 className="text-blue-900 font-bold uppercase">Une Qualité remarquable 😋 </h2>
+
       
       <div className="flex justify-center items-center mt-6">
         <div className="h-px w-52 bg-blue-500 mr-2"></div>
