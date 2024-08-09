@@ -12,6 +12,7 @@ type listmenu = {
   sauceOptions?: string[];
   meatSelections?: string[];
   sauceSelections?: string[];
+  quantity?: number;
 };
 
 type BasketProps = {
@@ -19,10 +20,12 @@ type BasketProps = {
   toggleBasket: () => void;
   cartItems: listmenu[];
   removeFromCart: (index: number) => void;
+  updateQuantity: (index: number, quantity: number) => void;
+  totalPrice: number;
+
 };
 
-const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart }) => {
-  const totalPrice = cartItems.reduce((total, item) => total + parseFloat(item.price.toString().replace("€", "")), 0);
+const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart, updateQuantity,totalPrice}) => {
   const basketRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -36,6 +39,8 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
       toggleBasket();
     }
   };
+
+ 
 
   useEffect(() => {
     if (isBasketOpen) {
@@ -57,7 +62,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
         } overflow-hidden shadow-lg border-l border-gray-300`}
       >
         {isBasketOpen && (
-          <div className="text-gray-900 p-4 overflow-y-auto h-[78%]">
+          <div className="text-gray-900 p-4 overflow-y-auto  h-[77%] md:h-[68%]">
             <h2 className="text-xl font-bold mb-4">Votre Panier</h2>
             {cartItems.length === 0 ? (
               <p className="text-center">Votre panier est vide.</p>
@@ -81,6 +86,22 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
                           <span className="block text-sm text-gray-700">{item.sauceSelections.join(', ')}</span>
                         </div>
                       )}
+                       <div className="mt-2 flex items-center space-x-2">
+                        <button
+                          onClick={() => updateQuantity(index, item.quantity! - 1)}
+                          className="bg-gray-200 px-2 rounded-md"
+                          disabled={item.quantity! <= 1}
+                        >
+                          -
+                        </button>
+                        <span>{item.quantity}</span>
+                        <button
+                          onClick={() => updateQuantity(index, item.quantity! + 1)}
+                          className="bg-gray-200 px-2 rounded-md"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                     <div className="flex flex-col items-end">
                       <span className="text-lg font-bold">{item.price}</span>

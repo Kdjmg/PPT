@@ -12,12 +12,17 @@ type listmenu = {
     price: string;
     requiresMeatChoice?: boolean;
     requiredSauceChoice?: boolean;
-    meatChoiceCount?: number;
+    repeatCount?: number;
     meatOptions?: string[];
     sauceOptions?: string[];
     tag: string;
     meatSelections?: string[] ;
     sauceSelections?: string[];
+    quantity?: number;
+    softOptions?: string[];
+    glaceOptions?: string[];
+    tiramisuOption?: string[];
+
   };
 
  
@@ -45,11 +50,47 @@ export function Menu(){
         }
     };
 
-    const addToCart = (item: listmenu, meatSelections: string[], sauceSelections: string[]) => {
-        const newItem = { ...item, meatSelections, sauceSelections };
-        setCartItems([...cartItems, newItem]);
+    const addToCart = (
+        newItem: listmenu,
+        meatSelections: string[],
+        sauceSelections: string[]
+      ) => {
+        setCartItems(prevItems => {
+          const existingItemIndex = prevItems.findIndex(
+            item =>
+              item.title === newItem.title &&
+              JSON.stringify(item.meatSelections) === JSON.stringify(meatSelections) &&
+              JSON.stringify(item.sauceSelections) === JSON.stringify(sauceSelections)
+          );
+    
+          if (existingItemIndex >= 0) {
+            const updatedItems = [...prevItems];
+            updatedItems[existingItemIndex].quantity = (updatedItems[existingItemIndex].quantity || 1) + 1;
+            return updatedItems;
+          } else {
+            return [...prevItems, { ...newItem, meatSelections, sauceSelections, quantity: 1 }];
+          }
+        });
+      };
+    
+      const updateQuantity = (index: number, newQuantity: number) => {
+        setCartItems(prevItems => {
+          const updatedItems = [...prevItems];
+          if (newQuantity <= 0) {
+            updatedItems.splice(index, 1);
+          } else {
+            updatedItems[index].quantity = newQuantity;
+          }
+          return updatedItems;
+        });
       };
 
+      const calculateTotalPrice = () => {
+        return cartItems.reduce((total, item) => {
+          const itemTotal = (parseFloat(item.price) || 0) * (item.quantity || 1);
+          return total + itemTotal;
+        }, 0);
+      };
     const listmenu: listmenu [] = [
         {
             title: "Sweet Curry",
@@ -100,7 +141,7 @@ export function Menu(){
                 price: "6€",
                 requiresMeatChoice: true,
                 requiredSauceChoice: true,
-                meatChoiceCount:1,
+                repeatCount:1,
                 meatOptions: ["Poulet", "Boeuf", "Agneau"],
                 sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
@@ -112,7 +153,7 @@ export function Menu(){
                 price: "7€",
                 requiresMeatChoice: true,
                 requiredSauceChoice: true,
-                meatChoiceCount:2,
+                repeatCount:2,
                 meatOptions: ["Poulet", "Boeuf", "Agneau"],
                 sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
@@ -124,7 +165,7 @@ export function Menu(){
                 price: "10€",
                 requiresMeatChoice: true,
                 requiredSauceChoice: true,
-                meatChoiceCount:3,
+                repeatCount:3,
                 meatOptions: ["Poulet", "Boeuf", "Agneau"],
                 sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
@@ -136,7 +177,7 @@ export function Menu(){
                 price: "15€",
                 requiresMeatChoice: true,
                 requiredSauceChoice: true,
-                meatChoiceCount:4,
+                repeatCount:4,
                 meatOptions: ["Poulet", "Boeuf", "Agneau"],
                 sauceOptions: ["samourai", "ketchup", "mayonnaise"],
                 tag: "Tacos"
@@ -242,9 +283,11 @@ export function Menu(){
             {
                 title: "Glace",
                 descript: "Choclat ou vanille dans tout les cas ça reste de la glace ",
+                glaceOptions:["Chocolat", "Vanille", "Fraise"],
                 img: "/icecream.jpg",
                 price: "3€",
-                tag: "Dessert"
+                tag: "Dessert",
+                repeatCount:1
             },
             {
                 title: "Gaufre",
@@ -263,23 +306,29 @@ export function Menu(){
             {
                 title: "Tiramisu",
                 descript: "Ici c'est pas le tiramisu traditionel faite place au tiramisu galette breton kinder bueno ou encore oréo ",
+                tiramisuOption: ["bueno", "oreo", "café"],
                 img: "/tiramisu.jpg",
                 price: "3€",
-                tag: "Dessert"
+                tag: "Dessert",
+                repeatCount:1
             },
             {
                 title: "Boissons 33cl aux choix ",
                 descript: "Un peu de gazouz un peut de limonade  ",
+                softOptions: ["coca cola", "fanta", "oasis tropical"],
                 img: "/boissons.jpg",
                 price: "1.50€",
-                tag: "Boissons"
+                tag: "Boissons",
+                repeatCount:1
             },
             {
                 title: "Boissons 2L aux choix",
                 descript: "là même chose pour les 33cl mais en bouteille ",
+                softOptions: ["coca cola", "fanta", "oasis tropical"],
                 img: "/boissons.jpg",
                 price: "3€",
-                tag: "Boissons"
+                tag: "Boissons",
+                repeatCount:1
             },
 
         
@@ -307,7 +356,14 @@ export function Menu(){
 })}
 
     </div>
-    <Basket isBasketOpen={isBasketOpen} toggleBasket={toggleBasket} cartItems={cartItems} removeFromCart={removeFromCart}/>
+    <Basket 
+    isBasketOpen={isBasketOpen} 
+    toggleBasket={toggleBasket} 
+    cartItems={cartItems} 
+    removeFromCart={removeFromCart} 
+    updateQuantity={updateQuantity}
+    totalPrice={calculateTotalPrice()}
+    />
 
 
     
