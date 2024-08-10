@@ -1,11 +1,10 @@
+import { Section3 } from "../components/Section3";
+
 export function Contact(){
 
     return <>
-    
+          <Section3 />
 
-<h1>contact</h1>
-
-   
     </>
 
 }

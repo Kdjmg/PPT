@@ -1,40 +1,85 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react';
 import { IonIcon } from '@ionic/react';
 import { close, menu } from 'ionicons/icons'; 
-
 import { NavLink } from 'react-router-dom';
-const Nav = () => {
-    const Links =[
-      {name:"ACCUEIL",link:"/"},
-      {name:"MENU",link:"/menu"},
-      {name:"CONTACT",link:"/contact"},
-      {icon:"basket",link:"/basket"},
-    ];
-    const [open,setOpen]=useState(false);
-  return (
-    <div className='z-10 shadow-md w-full sticky top-0 left-0'>
-      <div className='md:flex items-center justify-between bg-blue-950 py-4 md:px-10 px-7'>
-      <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
-      text-gray-800'>
-        <img className="w-24" src="/ppt.png" alt="" />
-      </div>
-      
-      <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-8 top-6 cursor-pointer  md:hidden'>
-      <IonIcon className='text-white' icon={open ? close:menu}></IonIcon>
-      </div>
-      <ul className={`md:flex md:flex-row md:items-center md:pb-0 pb-12 absolute md:static bg-blue-950 md:z-auto z-[-1] left-0 w-full md:w-auto flex flex-col items-center md:pl-0 pl-9 transition-all duration-500 ease-in ${open ? 'top-28' : 'top-[-490px]'}`}>
-          {Links.map((link, index) => (
-            <li key={index} className='md:ml-8 text-xl md:my-0 my-7'>
-              <a href={link.link}className='text-white hover:text-gray-400 duration-500 flex items-center'>
-              <NavLink to={link.link}>{link.name}
-              </NavLink>
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  )
-}
 
-export default Nav
+const Nav = () => {
+    const Links = [
+        { name: "ACCUEIL", link: "/" },
+        { name: "MENU", link: "/menu" },
+        { name: "CONTACT", link: "/contact" },
+        { icon: "basket", link: "/basket" },
+    ];
+
+    const [open, setOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+    const toggleMenuRef = useRef<HTMLDivElement>(null);
+
+    const handleClickOutside = (event: MouseEvent) => {
+        if (
+            menuRef.current && 
+            !menuRef.current.contains(event.target as Node) &&
+            toggleMenuRef.current &&
+            !toggleMenuRef.current.contains(event.target as Node)
+        ) {
+            toggleMenu();
+        }
+    };
+
+    useEffect(() => {
+        if (open) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [open]);
+
+    const toggleMenu = () => {
+        setOpen(!open);
+    };
+
+    return (
+        <div className="z-10 shadow-md w-full sticky top-0 left-0">
+            <div className="md:flex items-center justify-between bg-blue-950 py-4 md:px-10 px-7">
+                <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
+                    <img className="w-24" src="/ppt.png" alt="" />
+                </div>
+
+                <div
+                    ref={toggleMenuRef}
+                    onClick={toggleMenu}
+                    className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+                >
+                    <IonIcon className="text-white" icon={open ? close : menu}></IonIcon>
+                </div>
+
+                <div
+                    ref={menuRef}
+                    className={`fixed md:static top-0 left-0 h-[100vh] md:h-auto bg-blue-950 transition-all duration-200 ease-in-out ${
+                        open ? 'w-[50%]' : 'w-0 md:w-auto'
+                    } overflow-hidden md:w-auto md:flex md:items-center`}
+                >
+                    <ul className="flex flex-col md:flex-row md:space-x-8 items-center justify-center md:justify-end h-full md:h-auto">
+                        {Links.map((link, index) => (
+                            <li key={index} className="text-xl my-7 md:my-0">
+                                <NavLink
+                                    to={link.link}
+                                    className="text-white hover:text-gray-400 duration-500 flex items-center"
+                                    onClick={() => setOpen(false)}
+                                >
+                                    {link.name}
+                                </NavLink>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Nav;
