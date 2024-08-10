@@ -27,7 +27,7 @@ export const Footer: React.FC = () => {
               </a>
             </li>
             <li>
-              <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-gray-400">
+              <a href="https://web.snapchat.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-gray-400">
                 <IonIcon icon={logoSnapchat} size="40px" />
               </a>
             </li>
