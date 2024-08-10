@@ -50,9 +50,8 @@ export const Section3: React.FC = () => {
 
   return (
     <>
-    
       <h2 className="flex justify-center uppercase text-3xl text-center mt-2 px-4">
-        Où nous retrouver et heures d'ouverture ?
+         heures d'ouverture et contact
       </h2>
       <h1 className="flex justify-center font-bold uppercase text-blue-900 mt-4">
         Ici ou là, mais surtout là-bas !!
@@ -65,7 +64,7 @@ export const Section3: React.FC = () => {
       </div>
 
       <div className="m-4 flex flex-col items-center md:flex-row md:justify-center">
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col w[25rem] h-[40rem] items-center">
           <div className="w-[100%] items-center m-2">
             <ul className="w-full justify-center rounded-xl overflow-hidden shadow-lg p-6 flex flex-col items-center">
               <li className="text-blue-500">Le PTT</li>
@@ -90,7 +89,7 @@ export const Section3: React.FC = () => {
             </ul>
           </div>
 
-          <div className="flex flex-col md:flex-row">
+          <div className=" flex flex-col md:flex-row">
             <div className="w-full max-w-xl mx-auto my-4 p-4">
               <div className="flex flex-wrap justify-center gap-4">
                 {Object.entries(openingHours).map(([day, hours]) => {
@@ -124,21 +123,57 @@ export const Section3: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-[25rem] m-2 flex items-center justify-center">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.8827396526194!2d3.1024042!3d50.6292951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d7e548f79079%3A0x8c4fa06479ce937b!2sLe%20PPT!5e0!3m2!1sfr!2sus!4v1722718312485!5m2!1sfr!2sus"
-            width="350"
-            height="350"
-            className="border-0"
-            allowFullScreen={false}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Google Map"
-          ></iframe>
-        </div>
+        {/* Formulaire de Contact */}
+        <div className="m-4  flex flex-col w-[25rem] h-[40rem] items-center justify-between">
+  <h2 className="text-2xl font-semibold mb-4">Contactez-nous</h2>
+  <form
+    action="https://formspree.io/f/your-form-id"
+    method="POST"
+    className="w-full relative bottom-[230px]"
+  >
+    <div className="mb-4">
+      <label
+        htmlFor="email"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Adresse Email
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-950 focus:border-blue-950 sm:text-sm"
+        placeholder="Votre adresse email"
+      />
+    </div>
+    <div className="mb-4">
+      <label
+        htmlFor="message"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Message
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        required
+        rows={4}
+        className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-950 focus:border-blue-950 sm:text-sm"
+        placeholder="Votre message"
+      />
+    </div>
+    <button
+      type="submit"
+      className="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md text-white bg-blue-950 shadow-sm hover:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
+      Envoyer
+    </button>
+  </form>
+</div>
+
       </div>
 
-      {/* Formulaire de Contact */}
       
     </>
   );

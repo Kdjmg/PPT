@@ -4,6 +4,7 @@ import { Home } from './pages/Home'
 import { Menu } from './pages/Menu'
 import { Contact } from './pages/Contact'
 import Nav from './components/Nav'
+import { Footer } from './components/Footer'
 
 
 function App() {
@@ -23,9 +24,7 @@ function App() {
  
  
 
-<footer className="bg-blue-950 text-white p-4">
-    
-</footer>
+<Footer/>
 
   </>
 }
