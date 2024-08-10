@@ -7,7 +7,7 @@ export const Section3: React.FC = () => {
     Mercredi: '11h30 - 14h30 / 18h - 23h',
     Jeudi: '11h30 - 14h30 / 18h - 23h',
     Vendredi: '18h - 23h',
-    Samedi: '11h30 - 14h30 / 18h - 23h',
+    Samedi: '18h - 23h',
     Dimanche: '18h - 23h',
   };
 
