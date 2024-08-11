@@ -25,17 +25,6 @@ export const Section1: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex justify-center mt-8 space-x-4">
-        <div className="w-1/3">
-          <img src="pates.jpg" alt="Pâtes" className="rounded-lg shadow-lg" />
-        </div>
-        <div className="w-1/3">
-          <img src="/panini.jpg" alt="Panini" className="rounded-lg shadow-lg" />
-        </div>
-        <div className="w-1/3">
-          <img src="/tenders.jpg" alt="Poulet" className="rounded-lg shadow-lg" />
-        </div>
-      </div>
     </>
   );
 };
