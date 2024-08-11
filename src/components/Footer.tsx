@@ -56,12 +56,12 @@ export const Footer: React.FC = () => {
         {/* Google Maps Iframe */}
         <div className="w-full md:w-1/3 mb-6 md:mb-0">
           <h5 className="text-xl font-bold mb-4">Où nous trouver :</h5>
-          <div className="relative left-0">
+          <div className="relative w-full">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.8827396526194!2d3.1024042!3d50.6292951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d7e548f79079%3A0x8c4fa06479ce937b!2sLe%20PPT!5e0!3m2!1sfr!2sus!4v1722718312485!5m2!1sfr!2sus"
-            width="360"
-            height="200"
-            className="border-0"
+            width=""
+            height="250"
+            className="border-spacing-2"
             allowFullScreen={false}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

@@ -57,7 +57,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
     <>
       <div
         ref={basketRef}
-        className={`fixed top-32 right-0 h-full bg-white transition-transform duration-500 ease-in-out ${
+        className={`fixed z-10 top-32 right-0 h-full bg-white transition-transform duration-500 ease-in-out ${
           isBasketOpen ? 'w-[85%] md:w-[30%]' : 'w-0'
         } overflow-hidden shadow-lg border-l border-gray-300`}
       >
@@ -132,7 +132,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
       <button
         ref={toggleButtonRef}
         onClick={toggleBasket}
-        className="fixed bottom-4 right-4 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-lg"
+        className="z-20 fixed bottom-4 right-4 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-lg"
       >
         <IonIcon icon={basket} size="large"></IonIcon>
       </button>
