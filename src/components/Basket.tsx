@@ -22,10 +22,16 @@ type BasketProps = {
   removeFromCart: (index: number) => void;
   updateQuantity: (index: number, quantity: number) => void;
   totalPrice: number;
-
 };
 
-const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, removeFromCart, updateQuantity,totalPrice}) => {
+const Basket: React.FC<BasketProps> = ({
+  isBasketOpen,
+  toggleBasket,
+  cartItems,
+  removeFromCart,
+  updateQuantity,
+  totalPrice,
+}) => {
   const basketRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -40,8 +46,6 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
     }
   };
 
- 
-
   useEffect(() => {
     if (isBasketOpen) {
       document.addEventListener('mousedown', handleClickOutside);
@@ -53,6 +57,8 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
     };
   }, [isBasketOpen]);
 
+  const totalItems = cartItems.reduce((acc, item) => acc + (item.quantity || 0), 0);
+
   return (
     <>
       <div
@@ -62,7 +68,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
         } overflow-hidden shadow-lg border-l border-gray-300`}
       >
         {isBasketOpen && (
-          <div className="text-gray-900 p-4 overflow-y-auto  h-[77%] md:h-[68%]">
+          <div className="text-gray-900 p-4 overflow-y-auto h-[77%] md:h-[68%]">
             <h2 className="text-xl font-bold mb-4">Votre Panier</h2>
             {cartItems.length === 0 ? (
               <p className="text-center">Votre panier est vide.</p>
@@ -86,7 +92,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
                           <span className="block text-sm text-gray-700">{item.sauceSelections.join(', ')}</span>
                         </div>
                       )}
-                       <div className="mt-2 flex items-center space-x-2">
+                      <div className="mt-2 flex items-center space-x-2">
                         <button
                           onClick={() => updateQuantity(index, item.quantity! - 1)}
                           className="bg-gray-200 px-2 rounded-md"
@@ -96,7 +102,7 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
                         </button>
                         <span>{item.quantity}</span>
                         <button
-                          onClick={() => updateQuantity(index, item.quantity! + 1)}
+                          onClick={() => updateQuantity(index, item.quantity!  +1)}
                           className="bg-gray-200 px-2 rounded-md"
                         >
                           +
@@ -135,6 +141,11 @@ const Basket: React.FC<BasketProps> = ({ isBasketOpen, toggleBasket, cartItems, 
         className="z-20 fixed bottom-4 right-4 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-lg"
       >
         <IonIcon icon={basket} size="large"></IonIcon>
+        {totalItems > 0 && (
+          <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full transform translate-x-1/2 -translate-y-1/2">
+            {totalItems}
+          </span>
+        )}
       </button>
     </>
   );

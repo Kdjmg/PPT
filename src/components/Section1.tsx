@@ -13,7 +13,7 @@ export const Section1: React.FC = () => {
       </div>
 
       <div className="flex justify-around flex-wrap flex-col md:flex-row items-center mt-8">
-        <img src="/tacosfritecoca.png" alt="" className=' w-2/4 md:w-2/6' />
+        <img src="/pptskin.png" alt="" className=' w-2/4 md:w-2/6' />
         <div className="border rounded-lg p-6 bg-white shadow-lg w-3/4 md:w-1/2 mr-4">
           <h3 className="text-2xl font-bold text-center text-blue-900 mb-4">Ok Jamy, mais c'est quoi PPT ? Eh bien c'est ni plus ni moins  Pates Panini Tacos  </h3>
           <p className="flex justify-center text-center text-lg m-4">Vous avez une petite faim ou un gros appétit ?</p>

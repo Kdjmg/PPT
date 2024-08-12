@@ -50,28 +50,24 @@ export function Menu(){
         }
     };
 
-    const addToCart = (
-        newItem: listmenu,
-        meatSelections: string[],
-        sauceSelections: string[]
-      ) => {
+    const addToCart = (newItem: listmenu, meatSelections: string[], sauceSelections: string[]) => {
         setCartItems(prevItems => {
-          const existingItemIndex = prevItems.findIndex(
-            item =>
-              item.title === newItem.title &&
-              JSON.stringify(item.meatSelections) === JSON.stringify(meatSelections) &&
-              JSON.stringify(item.sauceSelections) === JSON.stringify(sauceSelections)
-          );
-    
-          if (existingItemIndex >= 0) {
-            const updatedItems = [...prevItems];
-            updatedItems[existingItemIndex].quantity = (updatedItems[existingItemIndex].quantity || 1) + 1;
-            return updatedItems;
-          } else {
-            return [...prevItems, { ...newItem, meatSelections, sauceSelections, quantity: 1 }];
-          }
+            const existingItemIndex = prevItems.findIndex(
+                item =>
+                    item.title === newItem.title &&
+                    JSON.stringify(item.meatSelections) === JSON.stringify(meatSelections) &&
+                    JSON.stringify(item.sauceSelections) === JSON.stringify(sauceSelections)
+            );
+
+            if (existingItemIndex >= 0) {
+                const updatedItems = [...prevItems];
+                updatedItems[existingItemIndex].quantity = (updatedItems[existingItemIndex].quantity || 1) + 1;
+                return updatedItems;
+            } else {
+                return [...prevItems, { ...newItem, meatSelections, sauceSelections, quantity: 1 }];
+            }
         });
-      };
+    };
     
       const updateQuantity = (index: number, newQuantity: number) => {
         setCartItems(prevItems => {
