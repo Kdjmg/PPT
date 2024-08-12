@@ -12,10 +12,10 @@ type listmenu = {
 type ModalProps = {
   item: listmenu;
   onClose: (meatSelections: string[], sauceSelections: string[]) => void;
-  onCancel?: () => void; 
+  onCancel: ()=> void; 
 };
 
-const Modal: React.FC<ModalProps> = ({ item, onClose }) => {
+const Modal: React.FC<ModalProps> = ({ item, onClose, onCancel }) => {
   const { title, requiresMeatChoice, requiredSauceChoice, meatOptions, sauceOptions, repeatCount } = item;
   const [meatSelections, setMeatSelections] = useState<string[]>(repeatCount ? Array(repeatCount).fill('') : []);
   const [sauceSelections, setSauceSelections] = useState<string[]>([]);
@@ -83,7 +83,7 @@ const Modal: React.FC<ModalProps> = ({ item, onClose }) => {
 
         <div className="flex justify-end space-x-4">
           <button
-            onClick={() => onClose([], [])}
+            onClick={onCancel}
             className="bg-red-500 text-white px-4 py-2 rounded-lg"
           >
             Annuler
