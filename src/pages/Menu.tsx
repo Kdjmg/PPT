@@ -73,7 +73,7 @@ export function Menu() {
 
     const closeModal = () => {
         setIsModalOpen(false);
-        setSelectedItem(null);
+        
     };
 
     const handleOpenModal = (item: listmenu) => {
@@ -140,8 +140,8 @@ export function Menu() {
                 cartItems={cartItems}
                 removeFromCart={removeFromCart}
                 updateQuantity={updateQuantity}
-                totalPrice={calculateTotalPrice()}
-
+                totalPrice={calculateTotalPrice()} 
+                onCancel={undefined}
             />
         </>
     );

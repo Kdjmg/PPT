@@ -22,6 +22,7 @@ type BasketProps = {
   removeFromCart: (index: number) => void;
   updateQuantity: (index: number, quantity: number) => void;
   totalPrice: number;
+  onCancel: void;
 };
 
 const Basket: React.FC<BasketProps> = ({

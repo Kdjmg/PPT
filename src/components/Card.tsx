@@ -36,7 +36,7 @@ export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
     if (requiresMeatChoice || requiredSauceChoice) {
       setIsModalOpen(true); 
     } else {
-      handleModalCancel
+      handleAddToCart([], []); 
     }
   };
 
