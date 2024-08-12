@@ -102,7 +102,7 @@ const Basket: React.FC<BasketProps> = ({
                         </button>
                         <span>{item.quantity}</span>
                         <button
-                          onClick={() => updateQuantity(index, item.quantity!  +1)}
+                          onClick={() => updateQuantity(index, item.quantity! + 1)}
                           className="bg-gray-200 px-2 rounded-md"
                         >
                           +
