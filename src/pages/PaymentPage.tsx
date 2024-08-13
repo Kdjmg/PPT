@@ -23,7 +23,6 @@ const PaymentPage: React.FC = () => {
 
   const handleConfirmPayment = (e: React.FormEvent) => {
     e.preventDefault();
-    // Logique de paiement ici, puis redirection ou confirmation
     navigate('/confirmation', { state: { customerInfo, cartItems, totalPrice } });
   };
 
