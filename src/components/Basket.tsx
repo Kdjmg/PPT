@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { IonIcon } from '@ionic/react';
 import { basket, trash } from 'ionicons/icons';
+import { useNavigate } from 'react-router-dom';
 
 type listmenu = {
   title: string;
@@ -35,7 +36,10 @@ const Basket: React.FC<BasketProps> = ({
 }) => {
   const basketRef = useRef<HTMLDivElement>(null);
   const toggleButtonRef = useRef<HTMLButtonElement>(null);
-
+const navigate =useNavigate();
+const handlePayment = () =>{
+  navigate('/payment', {state: {cartItems, totalPrice}});
+}
   const handleClickOutside = (event: MouseEvent) => {
     if (
       basketRef.current &&
@@ -127,8 +131,8 @@ const Basket: React.FC<BasketProps> = ({
               <div className="mt-6">
                 <div className="flex justify-between items-center mb-4">
                   <p className="font-bold text-xl">Total: {totalPrice.toFixed(2)}€</p>
-                  <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg">
-                    Payer
+                  <button onClick={handlePayment} className="bg-blue-950 hover:bg-blue-900  text-white px-4 py-2 rounded-lg">
+                    Confirmez le panier
                   </button>
                 </div>
               </div>

@@ -5,6 +5,7 @@ import { Menu } from './pages/Menu'
 import { Contact } from './pages/Contact'
 import Nav from './components/Nav'
 import { Footer } from './components/Footer'
+import PaymentPage from './pages/PaymentPage'
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
     <Route path='/' element={<Home/>}></Route>
     <Route path='/menu' element={<Menu/>}></Route>
     <Route path='/contact' element={<Contact/>}></Route>
-  </Routes>
+    <Route path='/payment' element={<PaymentPage/>}></Route>
+</Routes>
   </body>
  
  
