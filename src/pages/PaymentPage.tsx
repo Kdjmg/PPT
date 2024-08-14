@@ -84,10 +84,14 @@ const PaymentPage: React.FC = () => {
           <div className="border-t border-gray-200 pt-6">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Résumé du Panier</h3>
             <ul className="space-y-4">
-              {cartItems.map((item: { title: string; img:string, quantity: number; price: string }, index: number) => (
+              {cartItems.map((item: {
+                  meatSelections: string[], sauceSelections:string, title: string; img:string, quantity: number, price: string 
+}, index: number) => (
                 <li key={index} className="flex justify-between items-center bg-gray-50 p-4 rounded-lg shadow-sm">
                   <img src={item.img} className='w-[15%]' alt="" />
                   <span className="font-medium text-gray-800">{item.title}</span>
+                  <span className="font-medium text-gray-800">{item.meatSelections.join(', ')}</span>
+                  <span className="font-medium text-gray-800">{item.sauceSelections}</span>
                   <span className="text-gray-600">{item.quantity} x {item.price}</span>
                 </li>
               ))}
