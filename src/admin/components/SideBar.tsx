@@ -31,14 +31,14 @@ const Sidebar: React.FC = () => {
     const handleNavigation = (path: string) => {
         setTitle(getTitle(`/admin/${path}`));
         navigate(path);
-        setIsSidebarOpen(false);  // Fermer la sidebar après la navigation sur mobile
+        setIsSidebarOpen(false);  // Fermer la sidebar après la navigation
     };
 
     return (
         <div>
-            {/* Hamburger button for mobile */}
+            {/* Hamburger button */}
             <button
-                className="fixed lg:hidden p-4 text-white bg-blue-800"
+                className="fixed top-4 right-4 p-2 text-red-400 z-50 lg:top-4 lg:right-4"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -48,9 +48,9 @@ const Sidebar: React.FC = () => {
 
             {/* Sidebar */}
             <aside
-                className={` fixed top-0 left-0 lg:translate-x-0 h-full w-64 bg-blue-800 text-white transform ${
+                className={`fixed top-0 left-0 h-full w-64 bg-blue-800 text-white transform ${
                     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-                } transition-transform lg:transform-none z-50`}
+                } transition-transform z-40`}
             >
                 <div className="p-4 text-2xl font-semibold border-b border-blue-700">
                     {title}
@@ -99,7 +99,7 @@ const Sidebar: React.FC = () => {
             {/* Overlay for mobile when sidebar is open */}
             {isSidebarOpen && (
                 <div
-                    className="fixed inset-0 bg-black opacity-50 lg:hidden"
+                    className="fixed inset-0 bg-black opacity-50 z-30"
                     onClick={() => setIsSidebarOpen(false)}
                 ></div>
             )}
