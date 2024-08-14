@@ -27,7 +27,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
     const logout = () => {
         setUser(null);
-        navigate('/login');
+        navigate('/admin/login');
     };
 
     return (
