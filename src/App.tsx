@@ -8,11 +8,16 @@ import Nav from './components/Nav';
 import { Footer } from './components/Footer';
 import PaymentPage from './pages/PaymentPage';
 import AdminApp from './admin/AdminApp';
+import useCurrentPath from './hooks/useCurrentPath';
 
 const App: React.FC = () => {
+
+  const currentPath = useCurrentPath();
+  const isAdminPath = currentPath.startsWith('/admin')
   return (
+    
       <AuthProvider>
-        <Nav />
+        {!isAdminPath && <Nav />}        
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
@@ -20,8 +25,8 @@ const App: React.FC = () => {
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/admin/*" element={<AdminApp />} />
         </Routes>
-        <Footer />
-      </AuthProvider>
+        {!isAdminPath && <Footer />}
+        </AuthProvider>
   );
 };
 
