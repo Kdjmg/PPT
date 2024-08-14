@@ -12,7 +12,7 @@ const AdminApp: React.FC = () => {
   const showSidebar = !location.pathname.includes('/login'); // Conditionner l'affichage du Sidebar
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex overflow-hidden">
       {showSidebar && (
         <Sidebar />
       )}
