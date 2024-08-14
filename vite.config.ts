@@ -8,7 +8,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'src/index.html',
-        admin: 'src/admin/admin.html',
+        admin: 'src/admin.html',
       },
     },
     },
