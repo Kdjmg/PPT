@@ -38,7 +38,7 @@ const Sidebar: React.FC = () => {
         <div>
             {/* Hamburger button for mobile */}
             <button
-                className="lg:hidden p-4 text-white bg-blue-800"
+                className="fixed lg:hidden p-4 text-white bg-blue-800"
                 onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +48,7 @@ const Sidebar: React.FC = () => {
 
             {/* Sidebar */}
             <aside
-                className={`fixed top-0 left-0 lg:translate-x-0 h-full w-64 bg-blue-800 text-white transform ${
+                className={` fixed top-0 left-0 lg:translate-x-0 h-full w-64 bg-blue-800 text-white transform ${
                     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
                 } transition-transform lg:transform-none z-50`}
             >

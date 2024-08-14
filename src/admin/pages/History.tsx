@@ -25,29 +25,29 @@ const History: React.FC = () => {
   ];
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Historique des commandes</h1>
+    <div className="p-4 sm:p-6">
+      <h1 className="text-xl sm:text-2xl font-bold mb-4">Historique des commandes</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom du client</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Adresse</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Numéro de téléphone</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Résumé de la commande</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prix</th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
+              <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nom du client</th>
+              <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Adresse</th>
+              <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Numéro de téléphone</th>
+              <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Résumé de la commande</th>
+              <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Prix</th>
+              <th className="px-4 sm:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Statut</th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
             {orders.map((order) => (
               <tr key={order.id}>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{order.clientName}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.address}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.number}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.summary}</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.price}€</td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{order.clientName}</td>
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.address}</td>
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.number}</td>
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.summary}</td>
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">{order.price}€</td>
+                <td className="px-4 sm:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <span
                     className={`inline-flex px-2 text-xs font-semibold leading-5 ${
                       order.status === 'Payer'

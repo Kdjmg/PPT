@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { listmenuData } from '../../data/listmenuData';
 
 const Card: React.FC<{
@@ -8,9 +8,9 @@ const Card: React.FC<{
   onEdit: () => void;
 }> = ({ imageUrl, description, price, onEdit }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full md:w-80">
       <img className="w-full h-48 object-cover" src={imageUrl} alt="Product" />
-      <div className="p-4">
+      <div className="p-6">
         <h3 className="text-lg font-semibold mb-2">{description}</h3>
         <p className="text-gray-600 mb-4">{price}</p>
         <button
@@ -25,52 +25,16 @@ const Card: React.FC<{
 };
 
 const Settings: React.FC = () => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('Pates');
-  const [filteredMenu, setFilteredMenu] = useState(listmenuData);
-
-  const filterMenuByCategory = (category?: string) => {
-    if (!category || category === selectedCategory) {
-        setSelectedCategory('Pates');
-        setFilteredMenu([]);
-    } else {
-        setSelectedCategory(category);
-        const filteredItems = listmenuData.filter(item => item.tag.toLowerCase().includes(category.toLowerCase()));
-        setFilteredMenu(filteredItems);
-    }
-};
-
-  // Obtenez toutes les catégories uniques
-  const categories = Array.from(new Set(listmenuData.map(item => item.tag)));
-
   const handleEdit = (id: number) => {
     console.log('Modifier l\'élément avec l\'ID:', id);
     // Implémentez ici la logique pour modifier les détails du produit
   };
 
   return (
-    <div className="p-4 sm:p-6">
-      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Paramètres des produits</h1>
-      
-      {/* Boutons de filtrage */}
-      <div className="mb-4 sm:mb-6 flex flex-wrap">
-        {categories.map(category => (
-          <button
-            key={category}
-            onClick={() => filterMenuByCategory(category)}
-            className={`py-2 px-4 mr-2 mb-2 rounded-lg text-white focus:outline-none ${
-              category === selectedCategory
-                ? 'bg-blue-500'
-                : 'bg-gray-500 hover:bg-gray-600'
-            }`}
-          >
-            {category}
-          </button>
-        ))}
-      </div>
-      
-      {/* Carte des produits filtrés */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {filteredMenu.map((item, index) => (
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-6">Paramètres des produits</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {listmenuData.map((item, index:number) => (
           <Card
             key={index}
             imageUrl={item.img}
