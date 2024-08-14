@@ -8,9 +8,9 @@ const Card: React.FC<{
   onEdit: () => void;
 }> = ({ imageUrl, description, price, onEdit }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full md:w-80">
+    <div className="bg-white shadow-lg rounded-lg overflow-hidden w-full">
       <img className="w-full h-48 object-cover" src={imageUrl} alt="Product" />
-      <div className="p-6">
+      <div className="p-4">
         <h3 className="text-lg font-semibold mb-2">{description}</h3>
         <p className="text-gray-600 mb-4">{price}</p>
         <button
@@ -48,16 +48,16 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-6">Paramètres des produits</h1>
+    <div className="p-4 sm:p-6">
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Paramètres des produits</h1>
       
       {/* Boutons de filtrage */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6 flex flex-wrap">
         {categories.map(category => (
           <button
             key={category}
             onClick={() => filterMenuByCategory(category)}
-            className={`py-2 px-4 mr-4 mb-2 rounded-lg text-white focus:outline-none ${
+            className={`py-2 px-4 mr-2 mb-2 rounded-lg text-white focus:outline-none ${
               category === selectedCategory
                 ? 'bg-blue-500'
                 : 'bg-gray-500 hover:bg-gray-600'
@@ -69,12 +69,12 @@ const Settings: React.FC = () => {
       </div>
       
       {/* Carte des produits filtrés */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {filteredMenu.map((item, index) => (
           <Card
             key={index}
             imageUrl={item.img}
-            description={item.descript}
+            description={item.title}
             price={item.price}
             onEdit={() => handleEdit(index)}
           />
