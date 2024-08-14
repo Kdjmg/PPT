@@ -17,7 +17,7 @@ const AdminApp: React.FC = () => {
         <Sidebar />
       )}
       <main
-        className={`flex-1 p-6 ${showSidebar ? 'ml-64' : ''} bg-gray-100`}
+        className={`flex-1 p-6 ${showSidebar ? '' : ''} bg-gray-100`}
       >
         <Routes>
           <Route path="/login" element={<Login />} />
