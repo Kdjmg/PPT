@@ -42,9 +42,14 @@ const Nav = () => {
   const toggleMenu = () => {
     setOpen(!open);
   };
+  const [totalItems,setTotalItems] = useState(0);
+  
 
-  const totalItems = cartItems.reduce((total, item) => total + (item.quantity || 0), 0);
+  useEffect(() => {
+    const total = cartItems.reduce((sum, item) => sum + (item.quantity || 0), 0);
+    setTotalItems(total);
 
+  }, [cartItems]);
   return (
     <div className="z-10 shadow-md w-full sticky top-0 left-0">
       <div className="md:flex items-center justify-between bg-blue-950 py-4 md:px-10 px-7">
@@ -86,7 +91,7 @@ const Nav = () => {
               >
                 <IonIcon icon={basket} size="large" />
                 {totalItems > 0 && (
-                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full transform translate-x-1/2 -translate-y-1/2">
+                  <span className="md:hidden absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full transform translate-x-1/2 -translate-y-1/2">
                     {totalItems}
                   </span>
                 )}
