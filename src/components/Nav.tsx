@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { IonIcon } from '@ionic/react';
-import { close, menu, basket } from 'ionicons/icons'; 
+import { close, menu } from 'ionicons/icons'; 
 import { NavLink } from 'react-router-dom';
-import { useCart } from '../contexts/CartContext'; // Importez le contexte
+import Basket from './Basket';
 
 const Nav = () => {
   const Links = [
@@ -14,8 +14,12 @@ const Nav = () => {
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const toggleMenuRef = useRef<HTMLDivElement>(null);
-  const { cartItems } = useCart(); // Utilisez le contexte du panier
 
+
+  
+
+
+  
   const handleClickOutside = (event: MouseEvent) => {
     if (
       menuRef.current && 
@@ -25,6 +29,7 @@ const Nav = () => {
     ) {
       toggleMenu();
     }
+    
   };
 
   useEffect(() => {
@@ -42,14 +47,7 @@ const Nav = () => {
   const toggleMenu = () => {
     setOpen(!open);
   };
-  const [totalItems,setTotalItems] = useState(0);
   
-
-  useEffect(() => {
-    const total = cartItems.reduce((sum, item) => sum + (item.quantity || 0), 0);
-    setTotalItems(total);
-
-  }, [cartItems]);
   return (
     <div className="z-10 shadow-md w-full sticky top-0 left-0">
       <div className="md:flex items-center justify-between bg-blue-950 py-4 md:px-10 px-7">
@@ -83,20 +81,7 @@ const Nav = () => {
                 </NavLink>
               </li>
             ))}
-            <li className="text-xl my-7 md:my-0 relative">
-              <NavLink
-                to="/basket"
-                className="text-white hover:text-gray-400 duration-500 flex items-center"
-                onClick={() => setOpen(false)}
-              >
-                <IonIcon icon={basket} size="large" />
-                {totalItems > 0 && (
-                  <span className="md:hidden absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full transform translate-x-1/2 -translate-y-1/2">
-                    {totalItems}
-                  </span>
-                )}
-              </NavLink>
-            </li>
+           
             <li className="md:hidden text-xl my-7">
               <NavLink
                 to="/login"
@@ -116,18 +101,11 @@ const Nav = () => {
           >
             Se connecter
           </NavLink>
-          <NavLink to="/basket">
-            <button className="z-20 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-lg flex items-center justify-center relative">
-              <IonIcon icon={basket} size="large" />
-              {totalItems > 0 && (
-                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full transform translate-x-1/2 -translate-y-1/2">
-                  {totalItems}
-                </span>
-              )}
-            </button>
-          </NavLink>
+          
         </div>
       </div>
+      <Basket
+      />
     </div>
   );
 };

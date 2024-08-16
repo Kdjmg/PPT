@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Modal from './Modal';
+import { CartItem, useCart } from '../contexts/CartContext';
 
 type listmenu = {
   title: string;
@@ -20,10 +21,16 @@ type propsCard = {
   openModal: (item: listmenu) => void
 };
 
+
 export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
   const { title, descript, img, price, requiresMeatChoice, requiredSauceChoice,  } = item;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { dispatch } = useCart();
 
+
+  const addToCartt = (item: CartItem) => {
+    dispatch({ type: 'ADD_TO_CART', payload: item });
+  };
   const handleAddToCart = (meatSelections: string[], sauceSelections: string[]) => {
     if ((requiresMeatChoice && meatSelections.length === 0) || (requiredSauceChoice && sauceSelections.length === 0)) {
       return; 
@@ -36,7 +43,7 @@ export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
     if (requiresMeatChoice || requiredSauceChoice) {
       setIsModalOpen(true); 
     } else {
-      handleAddToCart([], []); 
+      addToCartt(item); 
     }
   };
 

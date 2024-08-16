@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { CartItem, useCart } from '../contexts/CartContext';
 
 type listmenu = {
+  price: string;
   title: string;
+  img:string;
   requiresMeatChoice?: boolean;
   requiredSauceChoice?: boolean;
   repeatCount?: number;
@@ -20,6 +23,8 @@ const Modal: React.FC<ModalProps> = ({ item, onClose, onCancel }) => {
   const [meatSelections, setMeatSelections] = useState<string[]>(repeatCount ? Array(repeatCount).fill('') : []);
   const [sauceSelections, setSauceSelections] = useState<string[]>([]);
   const [isConfirmDisabled, setIsConfirmDisabled] = useState(true);
+  const { dispatch } = useCart();
+
 
   useEffect(() => {
     const isMeatValid = !requiresMeatChoice || meatSelections.every(selection => selection !== '');
@@ -38,6 +43,17 @@ const Modal: React.FC<ModalProps> = ({ item, onClose, onCancel }) => {
   };
 
   const handleConfirm = () => {
+    const cartItem: CartItem = {
+      // Créez un objet CartItem avec les propriétés requises
+      title: item.title,
+      price: item.price, // Vous devrez peut-être calculer le prix en fonction des sélections
+      meatSelections: meatSelections,
+      sauceSelections: sauceSelections,
+      descript: '',
+      img: item.img,
+      tag: ''
+    };
+    dispatch({ type: 'ADD_TO_CART', payload: cartItem });
     onClose(meatSelections, sauceSelections);
   };
 

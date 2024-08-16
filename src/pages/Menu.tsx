@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import { Categories } from "../components/Categories";
-import Basket from "../components/Basket";
+// import Basket from "../components/Basket";
 import Modal from "../components/Modal";
 import { listmenuData } from "../data/listmenuData";
 
@@ -30,7 +30,7 @@ export function Menu() {
   const [cartItems, setCartItems] = useState<listmenu[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState<listmenu | null>(null);
-  const [isBasketOpen, setIsBasketOpen] = useState(false);
+  // const [isBasketOpen, setIsBasketOpen] = useState(false);
 
   // Load cart items from localStorage on component mount
   useEffect(() => {
@@ -45,13 +45,13 @@ export function Menu() {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const removeFromCart = (index: number) => {
-    setCartItems(cartItems.filter((_, i) => i !== index));
-  };
+  // const removeFromCart = (index: number) => {
+  //   setCartItems(cartItems.filter((_, i) => i !== index));
+  // };
 
-  const toggleBasket = () => {
-    setIsBasketOpen(!isBasketOpen);
-  };
+  // const toggleBasket = () => {
+  //   setIsBasketOpen(!isBasketOpen);
+  // };
 
   const filterMenuByCategory = (category?: string) => {
     if (!category || category === selectedCategory) {
@@ -99,24 +99,24 @@ export function Menu() {
     closeModal();
   };
 
-  const updateQuantity = (index: number, newQuantity: number) => {
-    setCartItems((prevItems) => {
-      const updatedItems = [...prevItems];
-      if (newQuantity <= 0) {
-        updatedItems.splice(index, 1);
-      } else {
-        updatedItems[index].quantity = newQuantity;
-      }
-      return updatedItems;
-    });
-  };
+  // const updateQuantity = (index: number, newQuantity: number) => {
+  //   setCartItems((prevItems) => {
+  //     const updatedItems = [...prevItems];
+  //     if (newQuantity <= 0) {
+  //       updatedItems.splice(index, 1);
+  //     } else {
+  //       updatedItems[index].quantity = newQuantity;
+  //     }
+  //     return updatedItems;
+  //   });
+  // };
 
-  const calculateTotalPrice = () => {
-    return cartItems.reduce((total, item) => {
-      const itemTotal = (parseFloat(item.price) || 0) * (item.quantity || 1);
-      return total + itemTotal;
-    }, 0);
-  };
+  // const calculateTotalPrice = () => {
+  //   return cartItems.reduce((total, item) => {
+  //     const itemTotal = (parseFloat(item.price) || 0) * (item.quantity || 1);
+  //     return total + itemTotal;
+  //   }, 0);
+  // };
 
   return (
     <>
@@ -150,14 +150,14 @@ export function Menu() {
           onCancel={handleCancelModal}
         />
       )}
-
+{/* 
       <Basket
               isBasketOpen={isBasketOpen}
               toggleBasket={toggleBasket}
               cartItems={cartItems}
               removeFromCart={removeFromCart}
               updateQuantity={updateQuantity}
-              totalPrice={calculateTotalPrice()} onCancel={undefined}      />
+              totalPrice={calculateTotalPrice()} onCancel={undefined}      /> */}
     </>
   );
 }

@@ -1,4 +1,4 @@
-type listmenuData = {
+export type listmenuData = {
     title: string;
     descript: string;
     img: string;
