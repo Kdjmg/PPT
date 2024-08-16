@@ -58,7 +58,7 @@ const Nav = () => {
         <div
           ref={toggleMenuRef}
           onClick={toggleMenu}
-          className="text-3xl absolute right-8 top-6 cursor-pointer md:hidden"
+          className="text-3xl absolute right-28 top-14 cursor-pointer md:hidden"
         >
           <IonIcon className="text-white" icon={open ? close : menu}></IonIcon>
         </div>
@@ -97,7 +97,7 @@ const Nav = () => {
         <div className="hidden md:flex items-center space-x-4">
           <NavLink
             to="/login"
-            className="text-white bg-red-500 hover:bg-red-600 px-6 py-2 rounded-full duration-300"
+            className="text-white mr-20 bg-red-500 hover:bg-red-600 px-6 py-2 rounded-full duration-300"
           >
             Se connecter
           </NavLink>
