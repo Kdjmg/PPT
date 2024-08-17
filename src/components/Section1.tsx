@@ -13,14 +13,28 @@ export const Section1: React.FC = () => {
       </div>
 
       <div className="flex justify-around flex-wrap flex-col md:flex-row items-center mt-8">
-        <img src="/pptskin.png" alt="" className=' w-2/4 md:w-2/6' />
-        <div className="border rounded-lg p-6 bg-white shadow-lg w-3/4 md:w-1/2 mr-4">
-          <h3 className="text-2xl font-bold text-center text-blue-900 mb-4">Ok Jamy, mais c'est quoi PPT ? Eh bien c'est ni plus ni moins  Pates Panini Tacos  </h3>
-          <p className="flex justify-center text-center text-lg m-4">Vous avez une petite faim ou un gros appétit ?</p>
-          <p className="flex justify-center text-center text-lg m-4"> Pas de problème on sauras vous satisfaire ! Venez passer commande chez nous et faites-vous livrer chez vous dans les plus brefs délais. </p>
-          <p className="flex justify-center text-center text-lg m-4"> Chez PPT, nous comprenons l'importance d'un repas rapide et délicieux. </p>
-          <p className="flex justify-center text-center text-lg m-4">Que vous ayez envie de pâtes savoureuses, de paninis croustillants, ou de poulet juteux, nous avons ce qu'il vous faut. Commandez en ligne et profitez d'un service de livraison rapide et fiable, directement à votre porte.</p>
-          <p className="flex justify-center text-center text-lg m-4">Bon appétit !</p>
+        
+        <img src="/pptskin.png" alt="" className='' />
+        <div className=" p-6 bg-white md:w-1/2 w-full">
+          <h3 className="text-3xl font-bold text-center text-blue-900 mb-4">Ok Jamy, mais c'est quoi PPT ? </h3>
+        
+          <div className="flex flex-col md:flex-row items-center md:items-start p-4 md:p-8 space-y-4 md:space-y-0">
+    <div className="relative  p-6  text-center w-full md:w-3/4 mx-auto">
+        <img src="/jammy.png" alt="Jamy" className="absolute top-8 left-4 transform -translate-x-1/2 -translate-y-1/2 w-[30%] md:w-[30%] rounded-lg" />
+        
+        <div className="ml-[15%]">
+            <h2 className="text-3xl font-bold text-blue-950 mb-4">Eh bien, mon chèr Fred ça veut dire Panini, Pâtes, Tacos. </h2>
+            <p className="text-lg  text-gray-800 mb-4">Et figurez-vous que si vous avez une petite faim ou un gros appétit...</p>
+            <p className="text-lg text-gray-700 mb-4">Pas de souci, nous avons de quoi vous combler ! Passez commande chez <span className="font-semibold">PPT</span> et faites-vous livrer rapidement à domicile.</p>
+            <p className="text-lg text-gray-700 mb-6">Chez <span className="font-semibold">PPT</span>, nous savons à quel point un repas savoureux et rapide est essentiel. Que vous rêviez de pâtes gourmandes, de paninis croustillants, ou de poulet tendre et juteux, nous avons ce qu'il vous faut. Commandez en ligne et profitez d'une livraison express, directement à votre porte.</p>
+            <p className="text-2xl font-bold text-gray-800">Bon appétit !</p>
+        </div>
+    </div>
+</div>
+
+
+
+          
         
         </div>
       </div>
