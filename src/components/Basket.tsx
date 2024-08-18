@@ -67,7 +67,7 @@ const Basket: React.FC = () => {
       <button 
         onClick={toggleBasket}
         ref={toggleButtonRef} // Ajout de la référence du bouton
-        className="absolute z-30 top-8 right-4 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-lg shadow-lg"
+        className="fixed z-30 top-6 right-4 p-4 bg-yellow-500 hover:bg-yellow-600 text-white rounded-full shadow-lg"
       >
         <IonIcon icon={basket} size="large" />
         {cartItems.length > 0 && (

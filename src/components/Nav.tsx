@@ -51,6 +51,7 @@ const Nav = () => {
   return (
     <div className="z-10 shadow-md w-full sticky top-0 left-0">
       <div className="md:flex items-center justify-between bg-blue-950 py-4 md:px-10 px-7">
+        
         <div className="font-bold text-2xl cursor-pointer flex items-center font-[Poppins] text-gray-800">
           <img className="w-24" src="/ppt.png" alt="Logo" />
         </div>
@@ -58,7 +59,7 @@ const Nav = () => {
         <div
           ref={toggleMenuRef}
           onClick={toggleMenu}
-          className="text-3xl absolute right-28 top-14 cursor-pointer md:hidden"
+          className="text-3xl absolute right-24 top-10 cursor-pointer md:hidden"
         >
           <IonIcon className="text-white" icon={open ? close : menu}></IonIcon>
         </div>
@@ -97,7 +98,7 @@ const Nav = () => {
         <div className="hidden md:flex items-center space-x-4">
           <NavLink
             to="/login"
-            className="text-white mr-20 bg-red-500 hover:bg-red-600 px-6 py-2 rounded-full duration-300"
+            className="text-white absolute right-24 bg-red-500 hover:bg-red-600 px-6 py-2 rounded-full duration-300"
           >
             Se connecter
           </NavLink>

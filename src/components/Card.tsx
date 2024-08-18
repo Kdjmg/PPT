@@ -53,9 +53,9 @@ export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
 
   return (
     <>
-      <article className="max-w-xs m-9 rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-200">
-        <div>
-          <div className="flex items-end overflow-hidden rounded-xl">
+      <article >
+        <div className="max-w-xs m-8 rounded-xl bg-white  shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
+          <div className="flex items-end overflow-hidden rounded-b-xl">
             <img src={img} alt={title} />
           </div>
 
@@ -63,10 +63,10 @@ export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
             <h2 className="text-blue-900 uppercase font-bold">{title}</h2>
             <p className="mt-1 text-sm text-slate-400">{descript}</p>
 
-            <div className="mt-3 flex flex-col items-start justify-between">
+            <div className="mt-3 flex flex-row items-start justify-between">
               <p className="text-lg font-bold text-blue-900">{price}</p>
 
-              <div className="flex items-center space-x-1.5 rounded-lg bg-blue-950 px-4 py-1.5 text-white duration-100 hover:bg-blue-900">
+              <div className="flex items-center space-x-1.5 rounded-lg bg-blue-950 px-4 py-2 text-white duration-100 hover:bg-blue-900">
                 <button onClick={handleOpenModal} className="text-sm">
                   Ajouter au panier
                 </button>
@@ -83,6 +83,7 @@ export const Card: React.FC<propsCard> = ({ item, addToCart }) => {
           onCancel={handleModalCancel}
         />
       )}
+      
     </>
   );
 };
