@@ -31,7 +31,6 @@ const Settings: React.FC = () => {
   const filterMenuByCategory = (category?: string) => {
     if (!category || category === selectedCategory) {
         setSelectedCategory('Pates');
-        setFilteredMenu([]);
     } else {
         setSelectedCategory(category);
         const filteredItems = listmenuData.filter(item => item.tag.toLowerCase().includes(category.toLowerCase()));

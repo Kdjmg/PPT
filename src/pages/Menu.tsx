@@ -55,8 +55,7 @@ export function Menu() {
 
   const filterMenuByCategory = (category?: string) => {
     if (!category || category === selectedCategory) {
-      setSelectedCategory("Pates");
-      setFilteredMenu([]);
+      setSelectedCategory('pates');
     } else {
       setSelectedCategory(category);
       const filteredItems = listmenuData.filter((item) =>
