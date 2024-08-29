@@ -20,6 +20,10 @@ const Basket: React.FC = () => {
       return total + itemTotal;
     }, 0);
   };
+  const calculateItemTotalPrice = (item:any): number => {
+    const itemTotal = (parseFloat(item.price) || 0) * (item.quantity || 1);
+    return itemTotal;
+  };
 
   const handlePayment = () => {
     const totalPrice = calculateTotalPrice();
@@ -127,7 +131,7 @@ const Basket: React.FC = () => {
                       </div>
                     </div>
                     <div className="flex flex-col items-end">
-                      <span className="text-lg font-bold">{item.price}</span>
+                      <span className="text-lg font-bold">{calculateItemTotalPrice(item).toFixed(2)}</span>
                       <button
                         onClick={() => removeFromCart(index)}
                         className="text-red-500 hover:text-red-700 mt-2"
