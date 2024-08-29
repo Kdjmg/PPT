@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { IonIcon } from '@ionic/react';
 import { basket, trash } from 'ionicons/icons';
-import { useCart } from '../contexts/CartContext';
+import { CartItem, useCart } from '../contexts/CartContext';
 import { useNavigate } from 'react-router-dom';
 
 const Basket: React.FC = () => {
@@ -20,7 +20,7 @@ const Basket: React.FC = () => {
       return total + itemTotal;
     }, 0);
   };
-  const calculateItemTotalPrice = (item:any): number => {
+  const calculateItemTotalPrice = (item:CartItem): number => {
     const itemTotal = (parseFloat(item.price) || 0) * (item.quantity || 1);
     return itemTotal;
   };
