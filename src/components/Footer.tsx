@@ -10,7 +10,7 @@ export const Footer: React.FC = () => {
 
           {/* Informations de Contact */}
           <div className="w-full md:w-1/3">
-            <h5 className="text-xl font-bold mb-4">Contactez-nous</h5>
+            <h5 className="text-xl text-gray-400 font-bold mb-12">Contactez-nous :</h5>
             <ul className="space-y-2">
               <li>
                 <a
@@ -35,7 +35,7 @@ export const Footer: React.FC = () => {
 
           {/* Réseaux Sociaux */}
           <div className="w-full md:w-1/3">
-            <h5 className="text-xl font-bold mb-4">Suivez-nous :</h5>
+            <h5 className="text-xl text-gray-400 font-bold mb-12">Suivez-nous :</h5>
             <ul className="flex justify-start space-x-4 md:justify-start">
               <li>
                 <a
@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
 
           {/* Google Maps Iframe */}
           <div className="w-full md:w-1/3">
-            <h5 className="text-xl font-bold mb-4">Où nous trouver :</h5>
+            <h5 className="text-xl text-gray-400 font-bold mb-12">Où nous trouver :</h5>
             <div className="w-full h-0 pb-[56.25%] relative">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2530.8827396526194!2d3.1024042!3d50.6292951!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d7e548f79079%3A0x8c4fa06479ce937b!2sLe%20PPT!5e0!3m2!1sfr!2sus!4v1722718312485!5m2!1sfr!2sus"
@@ -80,7 +80,7 @@ export const Footer: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 mt-8 text-center border-t border-gray-700 pt-4">
-        <p>&copy; {new Date().getFullYear()} Le PTT. Tous droits réservés.</p>
+        <p className="text-gray-400">&copy; {new Date().getFullYear()} Le PTT. Tous droits réservés.</p>
       </div>
     </footer>
   );
