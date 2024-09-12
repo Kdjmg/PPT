@@ -9,6 +9,7 @@ import { Footer } from './components/Footer';
 import PaymentPage from './pages/PaymentPage';
 import AdminApp from './admin/AdminApp';
 import useCurrentPath from './hooks/useCurrentPath';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
 
@@ -17,13 +18,15 @@ const App: React.FC = () => {
   return (
       <AuthProvider>    
         {!isAdminPath && <Nav />} 
-        <Routes>
+          <ScrollToTop />
+          <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/payment" element={<PaymentPage />} />
           <Route path="/admin/*" element={<AdminApp />} />
         </Routes>
+        
         {!isAdminPath && <Footer />}
         </AuthProvider>
   );
