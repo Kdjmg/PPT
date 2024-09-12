@@ -11,13 +11,23 @@ export const ImageCarousel: React.FC = () => {
     slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 1500,
+    // autoplaySpeed: 1500,
     pauseOnHover: true,
+    responsive: [
+      {
+        breakpoint: 600,
+        settings: {
+          speed: 500,
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          autoplay: true,
+        }
+      },]
   };
 
   return (
     
-    <div className="w-[85%] mx-auto m-8">
+    <div className="w-[87%] mx-auto m-8">
       <Slider {...settings}>
         <div className='px-2'>
           <img
