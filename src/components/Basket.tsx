@@ -28,6 +28,8 @@ const Basket: React.FC = () => {
   const handlePayment = () => {
     const totalPrice = calculateTotalPrice();
     navigate('/payment', { state: { cartItems, totalPrice } });
+    toggleBasket()
+    
   };
 
   const updateQuantity = (index: number, newQuantity: number) => {
