@@ -1,26 +1,61 @@
 import React from 'react';
 
 const History: React.FC = () => {
-  // Exemple de données, vous pouvez les remplacer par des données dynamiques
   const orders = [
     {
       id: 1,
-      clientName: 'John Doe',
-      address: '123 Main St, Springfield',
-      summary: 'pates carbo , tacos L poulet tenders sauce samourai tiramisu',
-      number: 'O6 98 87 45 76',
-      price: '45.00',
+      clientName: 'Alice Smith',
+      address: '789 Maple St, Riverdale',
+      summary: 'burger double steak, frites cheddar bacon, milkshake vanille',
+      number: '06 11 22 33 44',
+      price: '28.00',
       status: 'Payer',
     },
     {
       id: 2,
-      clientName: 'Jane Doe',
-      address: '456 Oak St, Springfield',
-      summary: '2x Tacos XL poulet tenders cordon bleu nuggets',
-      number: 'O7 98 87 45 76',
-      price: '32.50 ',
-      status: 'Paiement refuser',
+      clientName: 'Bob Johnson',
+      address: '321 Birch Ave, Riverdale',
+      summary: 'pizza 4 fromages, salade césar, soda cola',
+      number: '07 22 33 44 55',
+      price: '35.50',
+      status: 'Payer',
     },
+    {
+      id: 3,
+      clientName: 'Charlie Brown',
+      address: '987 Elm St, Greenwood',
+      summary: 'sushi maki saumon, soupe miso, mochi thé vert',
+      number: '06 33 44 55 66',
+      price: '42.00',
+      status: 'Payer',
+    },
+    {
+      id: 4,
+      clientName: 'Diana Miller',
+      address: '654 Cedar Rd, Hilltown',
+      summary: 'wrap poulet, nuggets, tiramisu chocolat',
+      number: '07 44 55 66 77',
+      price: '23.75',
+      status: 'Paiement refusé',
+    },
+    {
+      id: 5,
+      clientName: 'Ethan Davis',
+      address: '123 Pine St, Lakeside',
+      summary: 'tacos XL boeuf, guacamole, frites cheddar, brownie',
+      number: '06 55 66 77 88',
+      price: '37.25',
+      status: 'Payer',
+    },
+    {
+      id: 6,
+      clientName: 'Fiona Wilson',
+      address: '432 Willow St, Mountainview',
+      summary: 'poke bowl saumon avocat, chips de patate douce, cookie',
+      number: '07 66 77 88 99',
+      price: '29.90',
+      status: 'Payer',
+    }
   ];
 
   return (
