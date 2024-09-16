@@ -5,7 +5,7 @@ const History: React.FC = () => {
   const orders = [
     {
       id: 1,
-      clientName: 'Mehdi Hook',
+      clientName: 'John Doe',
       address: '123 Main St, Springfield',
       summary: 'pates carbo , tacos L poulet tenders sauce samourai tiramisu',
       number: 'O6 98 87 45 76',
@@ -14,14 +14,13 @@ const History: React.FC = () => {
     },
     {
       id: 2,
-      clientName: 'Hamza coach éclaté au sol',
+      clientName: 'Jane Doe',
       address: '456 Oak St, Springfield',
       summary: '2x Tacos XL poulet tenders cordon bleu nuggets',
       number: 'O7 98 87 45 76',
       price: '32.50 ',
       status: 'Paiement refuser',
     },
-    // Ajoutez plus de données selon vos besoins
   ];
 
   return (
